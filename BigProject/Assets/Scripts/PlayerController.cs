@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float horizontalInput;
     public float ceilingPos = 1.5f;
     public float floorPos = 0.5f;
+    public float xBound = 4f;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,15 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.S))
         {
             transform.position = new Vector3(transform.position.x, floorPos, transform.position.z);
+        }
+
+        if(transform.position.x < -xBound)
+        {
+            transform.position = new Vector3(-xBound, transform.position.y, transform.position.z);
+        }
+        if(transform.position.x > xBound)
+        {
+            transform.position = new Vector3(xBound, transform.position.y, transform.position.z);
         }
     }
 

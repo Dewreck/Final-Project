@@ -34,7 +34,7 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnBarrier()
     {
-        float spawnInterval = Random.Range(0.1f,1.5f);
+        float spawnInterval = Random.Range(0.1f,1.0f);
 
         // Spawns a barrier on the ceiling
             Vector3 barrierTopSpawnPos = new Vector3(Random.Range(barrierSpawnX, barrierSpawnX2), 1.65f, ObjectZ);
