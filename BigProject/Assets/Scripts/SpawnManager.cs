@@ -21,22 +21,21 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("SpawnPillar", 0, 1.5f);
-        InvokeRepeating("SpawnBarrier", 1f, 1f);
+        Invoke("SpawnBarrier", 1.0f);
+        Invoke("SpawnBattery", 5.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
        
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Vector3 batterySpawnPos = new Vector3(Random.Range(barrierSpawnX, barrierSpawnX2),Random.Range(0.5f,1.6f), ObjectZ);
-            Instantiate(battery, batterySpawnPos, battery.transform.rotation);
-        }
+        
     }
 
     void SpawnBarrier()
     {
+        float spawnInterval = Random.Range(0.1f,1.5f);
+
         // Spawns a barrier on the ceiling
             Vector3 barrierTopSpawnPos = new Vector3(Random.Range(barrierSpawnX, barrierSpawnX2), 1.65f, ObjectZ);
             Instantiate(barrier, barrierTopSpawnPos, barrier.transform.rotation);
@@ -44,11 +43,24 @@ public class SpawnManager : MonoBehaviour
         // Spawns a barrier on the floor
             Vector3 barrierBottomSpawnPos = new Vector3(Random.Range(barrierSpawnX, barrierSpawnX2),floorBarrierY,ObjectZ);
             Instantiate(barrier, barrierBottomSpawnPos, barrier.transform.rotation);
+        
+        Invoke("SpawnBarrier", spawnInterval);
+    }
+
+    void SpawnBattery()
+    {
+        float spawnInterval = Random.Range(5.0f,10.0f);
+
+        Vector3 batterySpawnPos = new Vector3(Random.Range(barrierSpawnX, barrierSpawnX2),Random.Range(0.5f,1.6f), ObjectZ);
+        Instantiate(battery, batterySpawnPos, battery.transform.rotation);
+
+        Invoke("SpawnBattery", spawnInterval);
     }
 
 // this spawns wall pillars at regular intervals
     void SpawnPillar()
     {
+        
         Instantiate(pillar, new Vector3(-pillarX,pillarY,ObjectZ), pillar.transform.rotation);
         Instantiate(pillar, new Vector3(pillarX2,pillarY,ObjectZ), pillar.transform.rotation);
     }
