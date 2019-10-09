@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 4347163365220568833}
   - component: {fileID: 4347163365220568832}
   - component: {fileID: 1311632769}
+  - component: {fileID: 2410466591810063211}
   m_Layer: 0
   m_Name: (Battery)forwardCube
   m_TagString: Untagged
@@ -385,11 +386,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4347163365220568839}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 7.336566, y: 7.7748713, z: 6.881157}
+  m_Center: {x: 0.03485511, y: 0.054498278, z: -0.28724864}
 --- !u!114 &4347163365220568832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +413,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bbb2a99e49c96e4dafec9d3dde95e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2410466591810063211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4347163365220568839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8ff4432d29af114b968ea340ade1623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4347163365562959729
