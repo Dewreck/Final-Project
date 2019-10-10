@@ -20,6 +20,8 @@ public class CollisionDetect : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // destroys battery on collision with player
         Destroy(gameObject);
+        Debug.Log("Battery Get!");
     } 
 }
