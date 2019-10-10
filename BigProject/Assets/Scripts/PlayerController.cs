@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float horizontalInput;
     public float ceilingPos = 1.5f;
     public float floorPos = 0.5f;
-    public float xBound = 4f;
+    public float xBound = 2.1f;
     // Start is called before the first frame update
     void Start()
     {

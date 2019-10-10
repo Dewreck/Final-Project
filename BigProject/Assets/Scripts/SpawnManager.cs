@@ -51,7 +51,7 @@ public class SpawnManager : MonoBehaviour
     {
         float spawnInterval = Random.Range(5.0f,10.0f);
 
-        Vector3 batterySpawnPos = new Vector3(Random.Range(barrierSpawnX, barrierSpawnX2),Random.Range(0.5f,1.6f), ObjectZ);
+        Vector3 batterySpawnPos = new Vector3(Random.Range(-2.1f, 2.1f),Random.Range(0.5f,1.6f), ObjectZ);
         Instantiate(battery, batterySpawnPos, battery.transform.rotation);
 
         Invoke("SpawnBattery", spawnInterval);

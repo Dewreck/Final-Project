@@ -324,7 +324,7 @@ MonoBehaviour:
   horizontalInput: 0
   ceilingPos: 1.5
   floorPos: 0.5
-  xBound: 4
+  xBound: 2.1
 --- !u!54 &590413250
 Rigidbody:
   m_ObjectHideFlags: 0
