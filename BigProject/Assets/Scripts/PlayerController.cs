@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 15f;
+    // public float spinSpeed = 50f;
     public float horizontalInput;
     public float ceilingPos = 1.5f;
     public float floorPos = 0.5f;
     public float xBound = 2.1f;
+    public float flipRot;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,10 +41,21 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(xBound, transform.position.y, transform.position.z);
         }
+
+        // if(Input.GetKeyDown(KeyCode.R))
+        // {
+            
+        //    transform.rotation.z = 180;
+        // }
     }
 
-    void Flip()
-    {
-    
-    }
+    // void Flip()
+    // {
+    //     transform.Rotate(Vector3.forward * Time.deltaTime * spinSpeed);
+
+    //     if(transform.rotation.z < 180)
+    //     {
+    //         Flip();
+    //     }
+    // }
 }
