@@ -45,14 +45,14 @@ public class HazardMove : MonoBehaviour
     {
         hazard.transform.position = new Vector3(0, 0, transform.position.z);
         msgBottom.transform.position = new Vector3(0,0,-15);
-        Invoke("HazardReturn", 1);
+        Invoke("HazardReturn", 0.5f);
     }
 
     void HazardCeilHurt()
     {
         hazardCeil.transform.position = new Vector3(0,2, transform.position.z);
         msgTop.transform.position = new Vector3(0,0,-15);
-        Invoke("HazardCeilReturn", 1);
+        Invoke("HazardCeilReturn", 0.5f);
     }
 
     void HazardCeilReturn()
