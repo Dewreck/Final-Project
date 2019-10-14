@@ -21,7 +21,8 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("SpawnPillar", 0, 1.5f);
-        Invoke("SpawnBarrier", 1.0f);
+        Invoke("SpawnBarrierUp", 1.0f);
+        Invoke("SpawnBarrierDown", 1.0f);
         Invoke("SpawnBattery", 5.0f);
     }
 
@@ -32,7 +33,7 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    void SpawnBarrier()
+    void SpawnBarrierUp()
     {
         float spawnInterval = Random.Range(0.1f,1.0f);
 
@@ -40,12 +41,24 @@ public class SpawnManager : MonoBehaviour
             Vector3 barrierTopSpawnPos = new Vector3(Random.Range(barrierSpawnX, barrierSpawnX2), 1.65f, ObjectZ);
             Instantiate(barrier, barrierTopSpawnPos, barrier.transform.rotation);
 
+        
+        
+        Invoke("SpawnBarrierUp", spawnInterval);
+    }
+
+    void SpawnBarrierDown()
+    {
+        float spawnInterval = Random.Range(0.1f,1.0f);
+
+ 
+
         // Spawns a barrier on the floor
             Vector3 barrierBottomSpawnPos = new Vector3(Random.Range(barrierSpawnX, barrierSpawnX2),floorBarrierY,ObjectZ);
             Instantiate(barrier, barrierBottomSpawnPos, barrier.transform.rotation);
         
-        Invoke("SpawnBarrier", spawnInterval);
+        Invoke("SpawnBarrierDown", spawnInterval);
     }
+
 
     void SpawnBattery()
     {
