@@ -12,7 +12,8 @@ public class HazardMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+      
+        Invoke("HazardSpawner",5);
     }
 
     // Update is called once per frame
@@ -20,20 +21,37 @@ public class HazardMove : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.G))
         {
+            HazBegin();
+        }
+
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            HazCeilBegin();
+        }
+    }
+
+    void HazardSpawner()
+    {
+        Invoke("HazBegin", 5);
+
+        Invoke("HazCeilBegin", 10);
+    }
+
+    void HazBegin()
+    {
             msgBottom.transform.position = new Vector3(-2.5f,-2.5f,-3);
             Debug.Log("Bottom");
             
             
             Invoke("HazardHurt", 2);
-        }
+    }
 
-        if(Input.GetKeyDown(KeyCode.T))
-        {
+    void HazCeilBegin()
+    {
             msgTop.transform.position = new Vector3(-2.5f,7.5f,-3);
             Debug.Log("Top");
             
             Invoke("HazardCeilHurt", 2);
-        }
     }
 
     void HazardReturn()
