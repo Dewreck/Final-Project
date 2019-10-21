@@ -14,8 +14,10 @@ public class SpawnManager : MonoBehaviour
 
     public float barrierSpawnX = -3.5f;
     public float barrierSpawnX2 = 3.8f;
-    public float floorBarrierY = 0.37f;
-    public float topBarrierY = 1.63f;
+    public float floorBarrierY = 0.38f;
+    public float topBarrierY = 1.61f;
+
+    private PlayerController playerControllerScript;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,8 @@ public class SpawnManager : MonoBehaviour
         Invoke("SpawnBarrierUp", 1.0f);
         Invoke("SpawnBarrierDown", 1.0f);
         Invoke("SpawnBattery", 5.0f);
+
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -38,12 +42,15 @@ public class SpawnManager : MonoBehaviour
         float spawnInterval = Random.Range(0.1f,1.0f);
 
         // Spawns a barrier on the ceiling
+        if(playerControllerScript.gameOver == false)
+        {
             Vector3 barrierTopSpawnPos = new Vector3(Random.Range(barrierSpawnX, barrierSpawnX2), 1.65f, ObjectZ);
             Instantiate(barrier, barrierTopSpawnPos, barrier.transform.rotation);
 
         
         
         Invoke("SpawnBarrierUp", spawnInterval);
+        }
     }
 
     void SpawnBarrierDown()
@@ -53,10 +60,13 @@ public class SpawnManager : MonoBehaviour
  
 
         // Spawns a barrier on the floor
+        if(playerControllerScript.gameOver == false)
+        {
             Vector3 barrierBottomSpawnPos = new Vector3(Random.Range(barrierSpawnX, barrierSpawnX2),floorBarrierY,ObjectZ);
             Instantiate(barrier, barrierBottomSpawnPos, barrier.transform.rotation);
         
         Invoke("SpawnBarrierDown", spawnInterval);
+        }
     }
 
 
@@ -64,18 +74,23 @@ public class SpawnManager : MonoBehaviour
     {
         float spawnInterval = Random.Range(5.0f,10.0f);
 
+        if(playerControllerScript.gameOver == false)
+        {
         Vector3 batterySpawnPos = new Vector3(Random.Range(-2.1f, 2.1f),Random.Range(0.5f,1.6f), ObjectZ);
         Instantiate(battery, batterySpawnPos, battery.transform.rotation);
 
         Invoke("SpawnBattery", spawnInterval);
+        }
     }
 
 // this spawns wall pillars at regular intervals
     void SpawnPillar()
     {
-        
+        if(playerControllerScript.gameOver == false)
+        {
         Instantiate(pillar, new Vector3(-pillarX,pillarY,ObjectZ), pillar.transform.rotation);
         Instantiate(pillar, new Vector3(pillarX2,pillarY,ObjectZ), pillar.transform.rotation);
+        }
     }
 }
 

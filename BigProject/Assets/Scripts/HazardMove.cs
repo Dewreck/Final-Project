@@ -19,15 +19,7 @@ public class HazardMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            HazBegin();
-        }
-
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            HazCeilBegin();
-        }
+        
     }
 
     void HazardSpawner()
@@ -40,7 +32,7 @@ public class HazardMove : MonoBehaviour
     void HazBegin()
     {
             msgBottom.transform.position = new Vector3(-2.5f,-2.5f,-3);
-            Debug.Log("Bottom");
+            
             
             
             Invoke("HazardHurt", 2);
@@ -49,7 +41,7 @@ public class HazardMove : MonoBehaviour
     void HazCeilBegin()
     {
             msgTop.transform.position = new Vector3(-2.5f,7.5f,-3);
-            Debug.Log("Top");
+            
             
             Invoke("HazardCeilHurt", 2);
     }

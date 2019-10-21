@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 4347163364855646532}
   - component: {fileID: 4347163364855646539}
   - component: {fileID: 4347163364855646538}
-  - component: {fileID: 4347163364855646534}
+  - component: {fileID: 4296712531900109459}
   m_Layer: 0
   m_Name: rotateCube
   m_TagString: Untagged
@@ -282,7 +282,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4347163364855646534
+--- !u!114 &4296712531900109459
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -291,10 +291,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4347163364855646537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d244b4f0c1dd9f94786d2456f0ef9042, type: 3}
+  m_Script: {fileID: 11500000, guid: 8255ed3767e42884f89491f1ca8f8eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 170
+  speed: 200
 --- !u!1 &4347163365220568839
 GameObject:
   m_ObjectHideFlags: 0
