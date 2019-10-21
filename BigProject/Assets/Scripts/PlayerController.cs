@@ -20,15 +20,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(gameOver == false)
+        {
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
+        }
 
-        if(Input.GetKeyDown(KeyCode.W))
+        if(Input.GetKeyDown(KeyCode.W) && gameOver == false)
         {
             transform.position = new Vector3(transform.position.x, ceilingPos, transform.position.z);
         }
 
-        if(Input.GetKeyDown(KeyCode.S))
+        if(Input.GetKeyDown(KeyCode.S) && gameOver == false)
         {
             transform.position = new Vector3(transform.position.x, floorPos, transform.position.z);
         }
@@ -42,11 +45,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(xBound, transform.position.y, transform.position.z);
         }
 
-        // if(Input.GetKeyDown(KeyCode.R))
-        // {
-            
-        //    transform.rotation.z = 180;
-        // }
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -55,16 +54,15 @@ public class PlayerController : MonoBehaviour
         {
             gameOver = true;
             Debug.Log("Game Over!");
+        } 
+        
+        if(collision.gameObject.CompareTag("Hazard"))
+        {
+            gameOver = true;
+            Debug.Log("Ouch!");
+            Destroy(gameObject);
         }
     }
 
-    // void Flip()
-    // {
-    //     transform.Rotate(Vector3.forward * Time.deltaTime * spinSpeed);
-
-    //     if(transform.rotation.z < 180)
-    //     {
-    //         Flip();
-    //     }
-    // }
+    
 }
