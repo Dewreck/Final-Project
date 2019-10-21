@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float ceilingPos = 1.5f;
     public float floorPos = 0.5f;
     public float xBound = 2.1f;
-    public float flipRot;
+    public bool gameOver = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +47,15 @@ public class PlayerController : MonoBehaviour
             
         //    transform.rotation.z = 180;
         // }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Barrier"))
+        {
+            gameOver = true;
+            Debug.Log("Game Over!");
+        }
     }
 
     // void Flip()

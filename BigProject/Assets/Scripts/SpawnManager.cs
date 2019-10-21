@@ -12,10 +12,10 @@ public class SpawnManager : MonoBehaviour
     private float pillarY = 1.0f;
     private float ObjectZ = 14.0f;
 
-    public float barrierSpawnX = -4f;
-    public float barrierSpawnX2 = 4.2f;
-    public float floorBarrierY = 0.36f;
-    public float topBarrierY = 1.65f;
+    public float barrierSpawnX = -3.5f;
+    public float barrierSpawnX2 = 3.8f;
+    public float floorBarrierY = 0.37f;
+    public float topBarrierY = 1.63f;
 
     // Start is called before the first frame update
     void Start()

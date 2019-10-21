@@ -18,8 +18,8 @@ public class BarrierCollisionDetect : MonoBehaviour
 
     private void OnTriggerEnter (Collider other)
     {
-        Debug.Log("Hit!");
-        Destroy(other.gameObject);
+        // Debug.Log("Hit!");
+        
     }
 
     // void StopMove()

@@ -57,6 +57,8 @@ public class HazardMove : MonoBehaviour
     void HazardReturn()
     {
         hazard.transform.position = new Vector3(0, -1, transform.position.z);
+
+        Invoke("HazBegin", 5);
     }
 
     void HazardHurt()
@@ -76,5 +78,7 @@ public class HazardMove : MonoBehaviour
     void HazardCeilReturn()
     {
         hazardCeil.transform.position = new Vector3(0, 3, transform.position.z);
+
+        Invoke("HazCeilBegin", 5);
     }
 }
