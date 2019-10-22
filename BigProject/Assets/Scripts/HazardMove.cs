@@ -15,7 +15,9 @@ public class HazardMove : MonoBehaviour
     void Start()
     {
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+    // this starts the floor hazard path
         Invoke("HazBegin",5);
+    //this starts the ceiling hazard path
         Invoke("HazCeilBegin",9);
     }
 
@@ -26,7 +28,7 @@ public class HazardMove : MonoBehaviour
     }
 
     
-
+// displays a warning message on the floor
     void HazBegin()
     {
             if(playerControllerScript.gameOver == false)
@@ -36,7 +38,7 @@ public class HazardMove : MonoBehaviour
             Invoke("HazardHurt", 2);
             }
     }
-
+//displays a warning message on the ceiling 
     void HazCeilBegin()
     {
             if(playerControllerScript.gameOver == false)
@@ -47,27 +49,29 @@ public class HazardMove : MonoBehaviour
             }
     }
 
-    void HazardReturn()
-    {
-        hazard.transform.position = new Vector3(0, -1, transform.position.z);
-
-        Invoke("HazBegin", 5);
-    }
-
+    
+//moves the floor hazard upwards through the floor
     void HazardHurt()
     {
         hazard.transform.position = new Vector3(0, 0, transform.position.z);
         msgBottom.transform.position = new Vector3(0,0,-15);
         Invoke("HazardReturn", 0.5f);
     }
-
+//moves the ceiling hazard downwards through the ceiling
     void HazardCeilHurt()
     {
         hazardCeil.transform.position = new Vector3(0,2, transform.position.z);
         msgTop.transform.position = new Vector3(0,0,-15);
         Invoke("HazardCeilReturn", 0.5f);
     }
+//moves the floor hazard back below the floor
+    void HazardReturn()
+    {
+        hazard.transform.position = new Vector3(0, -1, transform.position.z);
 
+        Invoke("HazBegin", 5);
+    }
+//moves the ceiling hazard back above the ceiling
     void HazardCeilReturn()
     {
         hazardCeil.transform.position = new Vector3(0, 3, transform.position.z);

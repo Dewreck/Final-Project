@@ -14,6 +14,7 @@ public class RotateBattery : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    // this rotates the object around the y axis
         transform.Rotate(Vector3.up * Time.deltaTime * speed);
     }
 }

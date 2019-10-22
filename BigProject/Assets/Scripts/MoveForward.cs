@@ -16,11 +16,12 @@ public class MoveForward : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    // this moves objects along the z axis while game is in play
         if(playerControllerScript.gameOver == false)
         {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
-
+    // this destroys all moving objects that reach the back bound
         if(transform.position.z < backBound)
         {
             Destroy(gameObject);
