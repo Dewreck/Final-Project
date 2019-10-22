@@ -8,12 +8,15 @@ public class HazardMove : MonoBehaviour
     public GameObject hazardCeil;
     public GameObject msgBottom;
     public GameObject msgTop;
+
+    private PlayerController playerControllerScript;
     
     // Start is called before the first frame update
     void Start()
     {
-      
-        Invoke("HazardSpawner",5);
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+        Invoke("HazBegin",5);
+        Invoke("HazCeilBegin",9);
     }
 
     // Update is called once per frame
@@ -22,28 +25,26 @@ public class HazardMove : MonoBehaviour
         
     }
 
-    void HazardSpawner()
-    {
-        Invoke("HazBegin", 5);
-
-        Invoke("HazCeilBegin", 10);
-    }
+    
 
     void HazBegin()
     {
+            if(playerControllerScript.gameOver == false)
+            {
             msgBottom.transform.position = new Vector3(-2.5f,-2.5f,-3);
             
-            
-            
             Invoke("HazardHurt", 2);
+            }
     }
 
     void HazCeilBegin()
     {
+            if(playerControllerScript.gameOver == false)
+            {
             msgTop.transform.position = new Vector3(-2.5f,7.5f,-3);
             
-            
             Invoke("HazardCeilHurt", 2);
+            }
     }
 
     void HazardReturn()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionDetect : MonoBehaviour
+public class BatteryCollect : MonoBehaviour
 {
 
     
@@ -22,6 +22,6 @@ public class CollisionDetect : MonoBehaviour
     {
         // destroys battery on collision with player
         Destroy(gameObject);
-        Debug.Log("Battery Get!");
+        Debug.Log("Battery Get!!");
     } 
 }
