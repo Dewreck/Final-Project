@@ -31,7 +31,7 @@ public class HazardMove : MonoBehaviour
 // displays a warning message on the floor
     void HazBegin()
     {
-            if(playerControllerScript.gameOver == false)
+            if(!playerControllerScript.gameOver)
             {
             msgBottom.transform.position = new Vector3(-2.5f,-2.5f,-3);
             
@@ -41,7 +41,7 @@ public class HazardMove : MonoBehaviour
 //displays a warning message on the ceiling 
     void HazCeilBegin()
     {
-            if(playerControllerScript.gameOver == false)
+            if(!playerControllerScript.gameOver)
             {
             msgTop.transform.position = new Vector3(-2.5f,7.5f,-3);
             

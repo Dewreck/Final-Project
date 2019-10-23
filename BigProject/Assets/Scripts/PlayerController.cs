@@ -21,18 +21,18 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
     // allows player to move left/right
-        if(gameOver == false)
+        if(!gameOver)
         {
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
         }
     // allows player to jump to the ceiling
-        if(Input.GetKeyDown(KeyCode.W) && gameOver == false)
+        if(Input.GetKeyDown(KeyCode.W) && !gameOver)
         {
             transform.position = new Vector3(transform.position.x, ceilingPos, transform.position.z);
         }
     // allows player to jump to the floor
-        if(Input.GetKeyDown(KeyCode.S) && gameOver == false)
+        if(Input.GetKeyDown(KeyCode.S) && !gameOver)
         {
             transform.position = new Vector3(transform.position.x, floorPos, transform.position.z);
         }

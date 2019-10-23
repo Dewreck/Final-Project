@@ -37,13 +37,13 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-// Spawns a barrier on the ceiling at random intervals
+// Spawns a barrier on the ceiling at random intervals during gameplay
     void SpawnBarrierUp()
     {
         float spawnInterval = Random.Range(0.1f,2.0f);
 
         
-        if(playerControllerScript.gameOver == false)
+        if(!playerControllerScript.gameOver)
         {
             Vector3 barrierTopSpawnPos = new Vector3(Random.Range(barrierSpawnX, barrierSpawnX2), 1.65f, ObjectZ);
             Instantiate(barrier, barrierTopSpawnPos, barrier.transform.rotation);
@@ -54,7 +54,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-// Spawns a barrier on the floor at random intervals
+// Spawns a barrier on the floor at random intervals during gameplay
     void SpawnBarrierDown()
     {
         float spawnInterval = Random.Range(0.1f,2.0f);
@@ -62,7 +62,7 @@ public class SpawnManager : MonoBehaviour
  
 
         
-        if(playerControllerScript.gameOver == false)
+        if(!playerControllerScript.gameOver)
         {
             Vector3 barrierBottomSpawnPos = new Vector3(Random.Range(barrierSpawnX, barrierSpawnX2),floorBarrierY,ObjectZ);
             Instantiate(barrier, barrierBottomSpawnPos, barrier.transform.rotation);
@@ -71,12 +71,12 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-// this spawns a battery within the play area at random intervals
+// this spawns a battery within the play area at random intervals during gameplay
     void SpawnBattery()
     {
         float spawnInterval = Random.Range(5.0f,10.0f);
 
-        if(playerControllerScript.gameOver == false)
+        if(!playerControllerScript.gameOver)
         {
         Vector3 batterySpawnPos = new Vector3(Random.Range(-2.1f, 2.1f),Random.Range(0.5f,1.6f), ObjectZ);
         Instantiate(battery, batterySpawnPos, battery.transform.rotation);
@@ -85,10 +85,10 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-// this spawns wall pillars at regular intervals
+// this spawns wall pillars at regular intervals during gameplay
     void SpawnPillar()
     {
-        if(playerControllerScript.gameOver == false)
+        if(!playerControllerScript.gameOver)
         {
         Instantiate(pillar, new Vector3(-pillarX,pillarY,ObjectZ), pillar.transform.rotation);
         Instantiate(pillar, new Vector3(pillarX2,pillarY,ObjectZ), pillar.transform.rotation);

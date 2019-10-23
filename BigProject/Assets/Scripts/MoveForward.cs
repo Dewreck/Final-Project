@@ -17,7 +17,7 @@ public class MoveForward : MonoBehaviour
     void Update()
     {
     // this moves objects along the z axis while game is in play
-        if(playerControllerScript.gameOver == false)
+        if(!playerControllerScript.gameOver)
         {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
