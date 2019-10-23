@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 15f;
+    
     // public float spinSpeed = 50f;
     public float horizontalInput;
     public float ceilingPos = 1.5f;
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(xBound, transform.position.y, transform.position.z);
         }
 
+     
         
     }
 
