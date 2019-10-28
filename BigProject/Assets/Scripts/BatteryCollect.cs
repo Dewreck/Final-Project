@@ -20,9 +20,9 @@ public class BatteryCollect : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // destroys battery on collision with player
+        // destroys battery and adds Health to player on collision with player
         Destroy(gameObject);
         Debug.Log("Battery Get!!");
-        playerControllerScript.playerHealth = 100f;
+        playerControllerScript.playerHealth += 50f;
     } 
 }

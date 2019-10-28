@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 15f;
 
+    public GameObject projectile;
+
     public float playerHealth = 100f;
     
     // public float spinSpeed = 50f;
@@ -26,6 +28,11 @@ public class PlayerController : MonoBehaviour
         PlayerMovement();
         PlayerBounding();
         HealthDrain();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(projectile, transform.position, projectile.transform.rotation);
+        }
     }
 
     void HealthDrain()
