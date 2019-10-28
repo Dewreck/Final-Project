@@ -5,11 +5,11 @@ using UnityEngine;
 public class BatteryCollect : MonoBehaviour
 {
 
-    
+    private PlayerController playerControllerScript;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -23,5 +23,6 @@ public class BatteryCollect : MonoBehaviour
         // destroys battery on collision with player
         Destroy(gameObject);
         Debug.Log("Battery Get!!");
+        playerControllerScript.playerHealth = 100f;
     } 
 }

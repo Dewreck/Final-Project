@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 15f;
+
+    public float playerHealth = 100f;
     
     // public float spinSpeed = 50f;
     public float horizontalInput;
@@ -20,6 +22,29 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        PlayerMovement();
+        PlayerBounding();
+        HealthDrain();
+    }
+
+    void HealthDrain()
+    {
+        playerHealth -= Time.deltaTime * 5.5f;
+
+        if (playerHealth < 30.0f)
+        {
+            Debug.Log("Battery Low");
+        }
+        if (playerHealth < 0.0f)
+        {
+            gameOver = true;
+            Destroy(gameObject);
+            Debug.Log("No Battery");
+        }
+    }
+
+    void PlayerMovement()
     {
     // allows player to move left/right
         if(!gameOver)
@@ -37,6 +62,10 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, floorPos, transform.position.z);
         }
+    }
+
+    void PlayerBounding()
+    {
     // bounds player on the left
         if(transform.position.x < -xBound)
         {
@@ -47,9 +76,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(xBound, transform.position.y, transform.position.z);
         }
-
-     
-        
     }
 
     private void OnCollisionEnter(Collision collision)
