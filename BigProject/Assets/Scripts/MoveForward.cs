@@ -29,15 +29,15 @@ public class MoveForward : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (playerControllerScript.gameTimer > 20f)
+        if (playerControllerScript.gameTimer > 20f && playerControllerScript.gameTimer < 35f)
         {
             speed = 9f;
         }
-        if (playerControllerScript.gameTimer > 35f && playerControllerScript.gameTimer < 35.1f)
+        if (playerControllerScript.gameTimer > 35f && playerControllerScript.gameTimer < 50f)
         {
             speed = 11f;
         }
-        if (playerControllerScript.gameTimer > 50f && playerControllerScript.gameTimer < 45.1f)
+        if (playerControllerScript.gameTimer > 50f && playerControllerScript.gameTimer < 65f)
         {
             speed = 13f;
         }
@@ -45,5 +45,6 @@ public class MoveForward : MonoBehaviour
         {
             speed = 15f;
         }
+
     }
 }

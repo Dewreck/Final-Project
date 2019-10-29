@@ -7,6 +7,8 @@ public class SpawnManager : MonoBehaviour
     public GameObject pillar;
     public GameObject barrier;
     public GameObject battery;
+
+    public float intervalRange = 2.0f;
     private float pillarX = 4.6f;
     private float pillarX2 = 4.9f;
     private float pillarY = 1.0f;
@@ -42,9 +44,13 @@ public class SpawnManager : MonoBehaviour
     {
         float spawnInterval = Random.Range(0.1f,2.0f);
 
-        if (playerControllerScript.gameTimer > 25f)
+        if (playerControllerScript.gameTimer > 25f && playerControllerScript.gameTimer < 50f)
         {
             spawnInterval = Random.Range(0.1f,1f);
+        }
+        if (playerControllerScript.gameTimer > 50f)
+        {
+            spawnInterval = Random.Range(0.1f,.7f);
         }
 
         
@@ -66,11 +72,14 @@ public class SpawnManager : MonoBehaviour
     {
         float spawnInterval = Random.Range(0.1f,2.0f);
         
-        if (playerControllerScript.gameTimer > 25f)
+        if (playerControllerScript.gameTimer > 25f && playerControllerScript.gameTimer < 50f)
         {
             spawnInterval = Random.Range(0.1f,1f);
         }
- 
+        if (playerControllerScript.gameTimer > 50f)
+        {
+            spawnInterval = Random.Range(0.1f,.7f);
+        }
 
         
         if(!playerControllerScript.gameOver)
