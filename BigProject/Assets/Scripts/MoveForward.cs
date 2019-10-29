@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MoveForward : MonoBehaviour
 {
-    private float speed = 7.0f;
+    public float speed = 7.0f;
     private float backBound = -15f;
     private PlayerController playerControllerScript;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class MoveForward : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     // this moves objects along the z axis while game is in play
         if(!playerControllerScript.gameOver)
         {
@@ -26,6 +28,22 @@ public class MoveForward : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    
+
+        if (playerControllerScript.gameTimer > 20f)
+        {
+            speed = 9f;
+        }
+        if (playerControllerScript.gameTimer > 35f && playerControllerScript.gameTimer < 35.1f)
+        {
+            speed = 11f;
+        }
+        if (playerControllerScript.gameTimer > 50f && playerControllerScript.gameTimer < 45.1f)
+        {
+            speed = 13f;
+        }
+        if (playerControllerScript.gameTimer > 65f)
+        {
+            speed = 15f;
+        }
     }
 }

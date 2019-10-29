@@ -42,6 +42,11 @@ public class SpawnManager : MonoBehaviour
     {
         float spawnInterval = Random.Range(0.1f,2.0f);
 
+        if (playerControllerScript.gameTimer > 25f)
+        {
+            spawnInterval = Random.Range(0.1f,1f);
+        }
+
         
         if(!playerControllerScript.gameOver)
         {
@@ -52,13 +57,19 @@ public class SpawnManager : MonoBehaviour
         
         Invoke("SpawnBarrierUp", spawnInterval);
         }
+
+
     }
 
 // Spawns a barrier on the floor at random intervals during gameplay
     void SpawnBarrierDown()
     {
         float spawnInterval = Random.Range(0.1f,2.0f);
-
+        
+        if (playerControllerScript.gameTimer > 25f)
+        {
+            spawnInterval = Random.Range(0.1f,1f);
+        }
  
 
         

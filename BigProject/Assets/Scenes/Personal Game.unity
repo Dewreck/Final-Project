@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 590413250}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -501,6 +501,7 @@ MonoBehaviour:
   floorPos: 0.5
   xBound: 2.1
   gameOver: 0
+  fireRate: 1
 --- !u!54 &590413250
 Rigidbody:
   m_ObjectHideFlags: 0

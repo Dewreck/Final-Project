@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
     public float floorPos = 0.5f;
     public float xBound = 2.1f;
     public bool gameOver = false;
+
+    public float fireRate = 1.0f;
+    private float nextFire = 0.0f;
+
+    public float gameTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,15 +34,22 @@ public class PlayerController : MonoBehaviour
         PlayerBounding();
         HealthDrain();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        gameTimer += Time.deltaTime * 1f;
+
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire && playerHealth > 30f)
         {
+            nextFire = Time.time + fireRate;
+            playerHealth -= 10f;
             Instantiate(projectile, transform.position, projectile.transform.rotation);
         }
     }
 
     void HealthDrain()
     {
+        if (!gameOver)
+        {
         playerHealth -= Time.deltaTime * 5.5f;
+        }
 
         if (playerHealth < 30.0f)
         {
@@ -48,6 +60,11 @@ public class PlayerController : MonoBehaviour
             gameOver = true;
             Destroy(gameObject);
             Debug.Log("No Battery");
+        }
+
+        if (playerHealth > 100)
+        {
+            playerHealth = 100f;
         }
     }
 
