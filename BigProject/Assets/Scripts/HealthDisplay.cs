@@ -5,6 +5,8 @@ using UnityEngine;
 public class HealthDisplay : MonoBehaviour
 {
     private PlayerController playerControllerScript;
+    private float healthAmnt;
+    private
 
     // Start is called before the first frame update
     void Start()
@@ -15,9 +17,20 @@ public class HealthDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if (!playerControllerScript.gameOver)
-        // {
-        //     transform.localScale -= new Vector3(.00038f,0,0);
-        // }
+        healthAmnt = playerControllerScript.playerHealth;
+        if (!playerControllerScript.gameOver)
+        {
+            transform.localScale = new Vector3(healthAmnt,0.18f,0.05f);
+        }
+
+        if (healthAmnt < 0.6f)
+        {
+            var cubeColor = gameObject.GetComponent<Renderer>();
+            cubeColor.material.SetColor("_Color", Color.red);
+        }else
+        {
+            var cubeColor = gameObject.GetComponent<Renderer>();
+            cubeColor.material.SetColor("_Color", Color.green);
+        }
     }
 }
