@@ -9,6 +9,10 @@ public class HazardMove : MonoBehaviour
     public GameObject msgBottom;
     public GameObject msgTop;
 
+    public bool down;
+    public bool up;
+    public float hazInterval;
+
     private PlayerController playerControllerScript;
     
     // Start is called before the first frame update
@@ -31,21 +35,31 @@ public class HazardMove : MonoBehaviour
 // displays a warning message on the floor
     void HazBegin()
     {
-            if(!playerControllerScript.gameOver)
+            hazInterval = Random.Range(1f,10f);
+            if(!playerControllerScript.gameOver && up == false && down == false)
             {
             msgBottom.transform.position = new Vector3(-2.5f,-2.5f,-3);
-            
+            down = true;            
             Invoke("HazardHurt", 2);
+            }else
+            {
+                hazInterval = Random.Range(1f,10f);
+                Invoke("HazBegin", hazInterval);
             }
     }
 //displays a warning message on the ceiling 
     void HazCeilBegin()
     {
-            if(!playerControllerScript.gameOver)
+            hazInterval = Random.Range(1f,10f);
+            if(!playerControllerScript.gameOver && down == false && up == false)
             {
             msgTop.transform.position = new Vector3(-2.5f,7.5f,-3);
-            
+            up = true;
             Invoke("HazardCeilHurt", 2);
+            }else
+            {
+                hazInterval = Random.Range(1f,10f);
+                Invoke("HazBegin", hazInterval);
             }
     }
 
@@ -67,15 +81,17 @@ public class HazardMove : MonoBehaviour
 //moves the floor hazard back below the floor
     void HazardReturn()
     {
+        hazInterval = Random.Range(5f,10f);
         hazard.transform.position = new Vector3(0, -1, transform.position.z);
-
-        Invoke("HazBegin", 5);
+        down = false;
+        Invoke("HazBegin", hazInterval);
     }
 //moves the ceiling hazard back above the ceiling
     void HazardCeilReturn()
     {
+        hazInterval = Random.Range(5f,10f);
         hazardCeil.transform.position = new Vector3(0, 3, transform.position.z);
-
-        Invoke("HazCeilBegin", 5);
+        up = false;
+        Invoke("HazCeilBegin", hazInterval);
     }
 }
