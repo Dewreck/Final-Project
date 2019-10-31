@@ -495,7 +495,7 @@ MonoBehaviour:
   speed: 4
   projectile: {fileID: 7099381510400733582, guid: 8fc3ff611f2da8249bbdb7a1d9331692,
     type: 3}
-  playerHealth: 100
+  playerHealth: 2
   horizontalInput: 0
   ceilingPos: 1.5
   floorPos: 0.5
@@ -552,6 +552,9 @@ MonoBehaviour:
   hazardCeil: {fileID: 1038774761}
   msgBottom: {fileID: 145644428}
   msgTop: {fileID: 1589126037}
+  down: 0
+  up: 0
+  hazInterval: 0
 --- !u!4 &646329745
 Transform:
   m_ObjectHideFlags: 0
@@ -1553,6 +1556,7 @@ MonoBehaviour:
   pillar: {fileID: 7539628228114845135, guid: ee12c8effd86a3642815b205e7864dc7, type: 3}
   barrier: {fileID: 6560903854545854545, guid: 7824b20b779fb2747a50313164e605e9, type: 3}
   battery: {fileID: 4347163365220568839, guid: c72325ae314036e4d94306075fd10620, type: 3}
+  intervalRange: 2
   barrierSpawnX: -4
   barrierSpawnX2: 4.2
   floorBarrierY: 0.36

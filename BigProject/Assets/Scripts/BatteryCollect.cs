@@ -25,7 +25,7 @@ public class BatteryCollect : MonoBehaviour
         {
         Destroy(gameObject);
         Debug.Log("Battery Get!!");
-        playerControllerScript.playerHealth += 50f;
+        playerControllerScript.playerHealth += 1f;
         }
     } 
 }

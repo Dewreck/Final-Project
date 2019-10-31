@@ -15,9 +15,9 @@ public class HealthDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerControllerScript.playerHealth < 100f && !playerControllerScript.gameOver)
-        {
-            transform.localScale += new Vector3(-.00038f,0,0);
-        }
+        // if (!playerControllerScript.gameOver)
+        // {
+        //     transform.localScale -= new Vector3(.00038f,0,0);
+        // }
     }
 }

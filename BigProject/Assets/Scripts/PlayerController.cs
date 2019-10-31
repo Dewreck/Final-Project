@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject projectile;
 
-    public float playerHealth = 100f;
+    public float playerHealth = 2f;
     
     // public float spinSpeed = 50f;
     public float horizontalInput;
@@ -36,10 +36,10 @@ public class PlayerController : MonoBehaviour
 
         gameTimer += Time.deltaTime * 1f;
 
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire && playerHealth > 30f)
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire && playerHealth > .6f)
         {
             nextFire = Time.time + fireRate;
-            playerHealth -= 10f;
+            playerHealth -= .2f;
             Instantiate(projectile, transform.position, projectile.transform.rotation);
         }
     }
@@ -48,10 +48,10 @@ public class PlayerController : MonoBehaviour
     {
         if (!gameOver)
         {
-        playerHealth -= Time.deltaTime * 5.5f;
+        playerHealth -= Time.deltaTime * .1f;
         }
 
-        if (playerHealth < 30.0f)
+        if (playerHealth < .6f)
         {
             Debug.Log("Battery Low");
         }
@@ -62,9 +62,9 @@ public class PlayerController : MonoBehaviour
             Debug.Log("No Battery");
         }
 
-        if (playerHealth > 100)
+        if (playerHealth > 2)
         {
-            playerHealth = 100f;
+            playerHealth = 2f;
         }
     }
 
