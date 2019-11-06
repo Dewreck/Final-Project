@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 15f;
 
     public GameObject projectile;
+    public GameObject crossHairs;
 
     public float playerHealth = 2f;
     
@@ -21,9 +22,13 @@ public class PlayerController : MonoBehaviour
     private float nextFire = 0.0f;
 
     public float gameTimer;
+
+    private CrosshairBehave crosshrScript;
     // Start is called before the first frame update
     void Start()
     {
+        crosshrScript = GameObject.Find("Crosshairs").GetComponent<CrosshairBehave>();
+        
         
     }
 
@@ -35,6 +40,10 @@ public class PlayerController : MonoBehaviour
         HealthDrain();
 
         gameTimer += Time.deltaTime * 1f;
+        
+        Crosshairs();
+
+        
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire && playerHealth > .6f)
         {
@@ -119,5 +128,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Crosshairs()
+    {
+        if(gameTimer > 30f && gameTimer < 40f)
+        {
+            crossHairs.gameObject.SetActive(true);
+        }else
+        {
+            crossHairs.gameObject.SetActive(false);
+        }
+
+        if (gameOver == true)
+        {
+            crossHairs.gameObject.SetActive(false);
+        }
+    }
     
 }

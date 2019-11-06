@@ -67,14 +67,14 @@ public class HazardMove : MonoBehaviour
 //moves the floor hazard upwards through the floor
     void HazardHurt()
     {
-        hazard.transform.position = new Vector3(0, 0, transform.position.z);
+        hazard.transform.position = new Vector3(0,-0.27f, transform.position.z);
         msgBottom.transform.position = new Vector3(0,0,-15);
         Invoke("HazardReturn", 0.5f);
     }
 //moves the ceiling hazard downwards through the ceiling
     void HazardCeilHurt()
     {
-        hazardCeil.transform.position = new Vector3(0,2, transform.position.z);
+        hazardCeil.transform.position = new Vector3(0,2.27f, transform.position.z);
         msgTop.transform.position = new Vector3(0,0,-15);
         Invoke("HazardCeilReturn", 0.5f);
     }

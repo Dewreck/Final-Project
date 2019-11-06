@@ -8,6 +8,7 @@ TagManager:
   - Battery
   - Hazard
   - Projectile
+  - Crosshairs
   layers:
   - Default
   - TransparentFX

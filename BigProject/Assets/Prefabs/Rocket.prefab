@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3397889118508952842}
   - component: {fileID: 3397889118508952853}
   - component: {fileID: 3397889118508952852}
-  - component: {fileID: 3397889118508952855}
+  - component: {fileID: 6908898751700387952}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -92,8 +92,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.19196963
+  m_Center: {x: -0.02513647, y: -0.012400945, z: 0.27}
 --- !u!54 &3397889118508952852
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -108,9 +108,9 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &3397889118508952855
+--- !u!114 &6908898751700387952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,7 +119,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3397889118508952854}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7c686d0e3730ae4b8db841296aa7ffb, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d1ccadbf9aafad4db8126b937f4c154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
