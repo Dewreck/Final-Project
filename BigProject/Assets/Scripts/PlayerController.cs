@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
         gameTimer += Time.deltaTime * 1f;
         
-        Crosshairs();
+        CrosshairsStart();
 
         
 
@@ -128,20 +128,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Crosshairs()
+    void CrosshairsStart()
     {
-        if(gameTimer > 30f && gameTimer < 40f)
+        if(gameTimer > 10f)
         {
-            crossHairs.gameObject.SetActive(true);
-        }else
-        {
-            crossHairs.gameObject.SetActive(false);
+            CrosshairsActive();
         }
+    }
 
-        if (gameOver == true)
-        {
-            crossHairs.gameObject.SetActive(false);
-        }
+    void CrosshairsActive()
+    {
+        crossHairs.gameObject.SetActive(true);
+        StartCoroutine(MissileActive());
+    }
+
+    IEnumerator MissileActive()
+    {
+        yield return new WaitForSeconds(10);
+        crossHairs.gameObject.SetActive(false);
     }
     
 }
