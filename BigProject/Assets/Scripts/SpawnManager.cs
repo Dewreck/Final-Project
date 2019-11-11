@@ -39,7 +39,7 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-// Spawns a barrier on the ceiling at random intervals during gameplay
+// this generates intervals that decrease as game progresses
     void SpawnBarrierUp()
     {
         float spawnInterval = Random.Range(0.1f,2.0f);
@@ -53,7 +53,7 @@ public class SpawnManager : MonoBehaviour
             spawnInterval = Random.Range(0.1f,.7f);
         }
 
-        
+    // this spawns a barrier on the ceiling at random intervals during gameplay then repeats
         if(!playerControllerScript.gameOver)
         {
             Vector3 barrierTopSpawnPos = new Vector3(Random.Range(barrierSpawnX, barrierSpawnX2), 1.65f, ObjectZ);
@@ -66,8 +66,8 @@ public class SpawnManager : MonoBehaviour
 
 
     }
+// this generates intervals that decrease as game progresses
 
-// Spawns a barrier on the floor at random intervals during gameplay
     void SpawnBarrierDown()
     {
         float spawnInterval = Random.Range(0.1f,2.0f);
@@ -81,7 +81,7 @@ public class SpawnManager : MonoBehaviour
             spawnInterval = Random.Range(0.1f,.7f);
         }
 
-        
+     // Spawns a barrier on the floor at random intervals during gameplay then repeats   
         if(!playerControllerScript.gameOver)
         {
             Vector3 barrierBottomSpawnPos = new Vector3(Random.Range(barrierSpawnX, barrierSpawnX2),floorBarrierY,ObjectZ);

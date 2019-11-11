@@ -34,7 +34,7 @@ public class CrosshairBehave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // this tracks player position and follows
         if(!playerControllerScript.gameOver)
         {
         Vector3 lookDirection = (player.transform.position - transform.position).normalized;
@@ -45,7 +45,7 @@ public class CrosshairBehave : MonoBehaviour
 
         Bounding();
     }
-
+    //this will fire a missile with antispam if crosshairs align with player
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player") && Time.time > nextFire)
@@ -56,7 +56,7 @@ public class CrosshairBehave : MonoBehaviour
             Instantiate(rocket, spawnPos, rocket.transform.rotation);
         }
     }
-
+// this bounds the crosshairs within the play area
     void Bounding()
     {
         if(transform.position.y > yBoundUp)

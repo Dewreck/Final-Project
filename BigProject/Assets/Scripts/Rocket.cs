@@ -17,6 +17,7 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // this moves projectile along the z axis and destroys it if it goes out of bounds
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
         if (transform.position.z > 14f)
         {
@@ -26,6 +27,7 @@ public class Rocket : MonoBehaviour
         
     }
 
+    //this destroys both projectile and barrier object on collision
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Barrier"))

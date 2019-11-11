@@ -35,6 +35,7 @@ public class HazardMove : MonoBehaviour
 // displays a warning message on the floor
     void HazBegin()
     {
+        //this tests if play area is available to begin hazard behavior
             hazInterval = Random.Range(1f,10f);
             if(!playerControllerScript.gameOver && up == false && down == false)
             {
@@ -43,6 +44,7 @@ public class HazardMove : MonoBehaviour
             Invoke("HazardHurt", 2);
             }else
             {
+            // this retries to begin the function at another interval
                 hazInterval = Random.Range(1f,10f);
                 Invoke("HazBegin", hazInterval);
             }
@@ -50,6 +52,7 @@ public class HazardMove : MonoBehaviour
 //displays a warning message on the ceiling 
     void HazCeilBegin()
     {
+        //this tests if play area is available to begin hazard behavior
             hazInterval = Random.Range(1f,10f);
             if(!playerControllerScript.gameOver && down == false && up == false)
             {
@@ -58,6 +61,7 @@ public class HazardMove : MonoBehaviour
             Invoke("HazardCeilHurt", 2);
             }else
             {
+            // this retries to begin the function at another interval
                 hazInterval = Random.Range(1f,10f);
                 Invoke("HazBegin", hazInterval);
             }

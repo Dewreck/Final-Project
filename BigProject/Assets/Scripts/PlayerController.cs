@@ -40,23 +40,25 @@ public class PlayerController : MonoBehaviour
         PlayerMovement();
         PlayerBounding();
         HealthDrain();
-
+        // this starts a timer that increases
         gameTimer += Time.deltaTime * 1f;
-        
-        if(!cHActive && gameTimer > 25f)
+        // this will begin crosshair behavior tree if it is not already active and game timer is above 15
+        if(!cHActive && gameTimer > 15f)
         {   
         Invoke("CrosshairsStart",5);
         }
 
         
 
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire && playerHealth > .6f)
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire && playerHealth > .6f && !gameOver)
         {
+            // this spawns a projectile on keypress with anti-spam protection if health is above 30%
             nextFire = Time.time + fireRate;
             playerHealth -= .2f;
             Instantiate(projectile, transform.position, projectile.transform.rotation);
         }  else if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire && playerHealth < .6f)
         {
+            // this shows that health value is insufficient to spawn projectile
             Debug.Log("No Power");
         }
         
@@ -64,18 +66,19 @@ public class PlayerController : MonoBehaviour
 
     void HealthDrain()
     {
+        // Slowly drains player health during gameplay
         if (!gameOver)
         {
         playerHealth -= Time.deltaTime * .1f;
         }
-
+        // Triggers GameOver and Player Destruction if health drains to 0
         if (playerHealth < 0.0f)
         {
             gameOver = true;
             Destroy(gameObject);
             Debug.Log("No Battery");
         }
-
+        // Caps player max health at a total of 2
         if (playerHealth > 2)
         {
             playerHealth = 2f;
@@ -135,6 +138,7 @@ public class PlayerController : MonoBehaviour
 
     void CrosshairsStart()
     {
+        // begins random countdown to begin crosshair behavior
         cHActive = true;
         crosshrinterval = Random.Range(10,20);
         Invoke("CrosshairsActive",crosshrinterval);
@@ -143,6 +147,7 @@ public class PlayerController : MonoBehaviour
 
     void CrosshairsActive()
     {
+        // sets crosshairs as active and starts countdown to deactivate
         crossHairs.gameObject.SetActive(true);
         StartCoroutine(MissileActive());
         
@@ -150,6 +155,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator MissileActive()
     {
+        // this lets the crosshairs behave for 15 seconds and then deactivates them
         yield return new WaitForSeconds(15);
         crossHairs.gameObject.SetActive(false);
         cHActive = false;
