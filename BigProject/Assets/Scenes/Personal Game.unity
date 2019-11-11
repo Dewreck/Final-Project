@@ -503,6 +503,7 @@ MonoBehaviour:
   xBound: 2.1
   gameOver: 0
   fireRate: 1
+  cHActive: 0
   gameTimer: 0
 --- !u!54 &590413250
 Rigidbody:

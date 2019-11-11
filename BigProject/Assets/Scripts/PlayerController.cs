@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     public float fireRate = 1.0f;
     private float nextFire = 0.0f;
+    private float crosshrinterval;
+    public bool cHActive = false;
 
     public float gameTimer;
 
@@ -41,7 +43,10 @@ public class PlayerController : MonoBehaviour
 
         gameTimer += Time.deltaTime * 1f;
         
-        CrosshairsStart();
+        if(!cHActive && gameTimer > 25f)
+        {   
+        Invoke("CrosshairsStart",5);
+        }
 
         
 
@@ -50,7 +55,11 @@ public class PlayerController : MonoBehaviour
             nextFire = Time.time + fireRate;
             playerHealth -= .2f;
             Instantiate(projectile, transform.position, projectile.transform.rotation);
+        }  else if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire && playerHealth < .6f)
+        {
+            Debug.Log("No Power");
         }
+        
     }
 
     void HealthDrain()
@@ -60,10 +69,6 @@ public class PlayerController : MonoBehaviour
         playerHealth -= Time.deltaTime * .1f;
         }
 
-        if (playerHealth < .6f)
-        {
-            Debug.Log("Battery Low");
-        }
         if (playerHealth < 0.0f)
         {
             gameOver = true;
@@ -130,22 +135,26 @@ public class PlayerController : MonoBehaviour
 
     void CrosshairsStart()
     {
-        if(gameTimer > 10f)
-        {
-            CrosshairsActive();
-        }
+        cHActive = true;
+        crosshrinterval = Random.Range(10,20);
+        Invoke("CrosshairsActive",crosshrinterval);
+        
     }
 
     void CrosshairsActive()
     {
         crossHairs.gameObject.SetActive(true);
         StartCoroutine(MissileActive());
+        
     }
 
     IEnumerator MissileActive()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(15);
         crossHairs.gameObject.SetActive(false);
+        cHActive = false;
     }
+
+    
     
 }

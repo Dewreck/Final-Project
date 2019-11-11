@@ -20,9 +20,9 @@ public class HazardMove : MonoBehaviour
     {
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     // this starts the floor hazard path
-        Invoke("HazBegin",5);
+        Invoke("HazBegin",15);
     //this starts the ceiling hazard path
-        Invoke("HazCeilBegin",9);
+        Invoke("HazCeilBegin",19);
     }
 
     // Update is called once per frame
