@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class HazardMove : MonoBehaviour
 {
     public GameObject hazard;
     public GameObject hazardCeil;
-    public GameObject msgBottom;
-    public GameObject msgTop;
+    public TextMeshProUGUI warningUP;
+    public TextMeshProUGUI warningDOWN;
 
     public bool down;
     public bool up;
@@ -39,7 +42,7 @@ public class HazardMove : MonoBehaviour
             hazInterval = Random.Range(1f,10f);
             if(!playerControllerScript.gameOver && up == false && down == false)
             {
-            msgBottom.transform.position = new Vector3(-2.5f,-2.5f,-3);
+            warningDOWN.gameObject.SetActive(true);
             down = true;            
             Invoke("HazardHurt", 2);
             }else
@@ -56,7 +59,7 @@ public class HazardMove : MonoBehaviour
             hazInterval = Random.Range(1f,10f);
             if(!playerControllerScript.gameOver && down == false && up == false)
             {
-            msgTop.transform.position = new Vector3(-2.5f,7.5f,-3);
+            warningUP.gameObject.SetActive(true);
             up = true;
             Invoke("HazardCeilHurt", 2);
             }else
@@ -72,14 +75,14 @@ public class HazardMove : MonoBehaviour
     void HazardHurt()
     {
         hazard.transform.position = new Vector3(0,-0.27f, transform.position.z);
-        msgBottom.transform.position = new Vector3(0,0,-15);
+        warningDOWN.gameObject.SetActive(false);
         Invoke("HazardReturn", 0.5f);
     }
 //moves the ceiling hazard downwards through the ceiling
     void HazardCeilHurt()
     {
         hazardCeil.transform.position = new Vector3(0,2.27f, transform.position.z);
-        msgTop.transform.position = new Vector3(0,0,-15);
+        warningUP.gameObject.SetActive(false);
         Invoke("HazardCeilReturn", 0.5f);
     }
 //moves the floor hazard back below the floor

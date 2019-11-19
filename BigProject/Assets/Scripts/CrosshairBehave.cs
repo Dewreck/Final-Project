@@ -17,7 +17,7 @@ public class CrosshairBehave : MonoBehaviour
     private Vector3 spawnPos;
     public int rocketCount = 0;
 
-    public float fireRate = 0.3f;
+    public float fireRate = 1f;
     public float nextFire;
 
     private PlayerController playerControllerScript;

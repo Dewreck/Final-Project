@@ -44,6 +44,7 @@ public class RocketBad : MonoBehaviour
             Destroy(gameObject);
             Destroy(other.gameObject);
             playerControllerScript.gameOver = true;
+            playerControllerScript.GameOverUI();
         }
     }
 }

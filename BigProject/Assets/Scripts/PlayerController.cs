@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,10 +11,12 @@ public class PlayerController : MonoBehaviour
 
     public GameObject projectile;
     public GameObject crossHairs;
+    public TextMeshProUGUI gameOverText;
+    public Button restartButton;
 
     public float playerHealth = 2f;
     
-    // public float spinSpeed = 50f;
+   
     public float horizontalInput;
     public float ceilingPos = 1.5f;
     public float floorPos = 0.5f;
@@ -40,6 +45,7 @@ public class PlayerController : MonoBehaviour
         PlayerMovement();
         PlayerBounding();
         HealthDrain();
+        GameOverUI();
         // this starts a timer that increases
         gameTimer += Time.deltaTime * 1f;
         // this will begin crosshair behavior tree if it is not already active and game timer is above 15
@@ -96,6 +102,7 @@ public class PlayerController : MonoBehaviour
     // allows player to jump to the ceiling
         if(Input.GetKeyDown(KeyCode.W) && !gameOver)
         {
+            
             transform.position = new Vector3(transform.position.x, ceilingPos, transform.position.z);
         }
     // allows player to jump to the floor
@@ -133,6 +140,7 @@ public class PlayerController : MonoBehaviour
             gameOver = true;
             Debug.Log("Ouch!");
             Destroy(gameObject);
+            GameOverUI();
         }
     }
 
@@ -161,6 +169,13 @@ public class PlayerController : MonoBehaviour
         cHActive = false;
     }
 
-    
+    public void GameOverUI()
+    {
+        if (gameOver == true)
+        {
+            gameOverText.gameObject.SetActive(true);
+            restartButton.gameObject.SetActive(true);
+        }
+    }
     
 }
