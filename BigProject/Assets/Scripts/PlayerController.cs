@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         HealthDrain();
         GameOverUI();
         // this starts a timer that increases
-        gameTimer += Time.deltaTime * 1f;
+        gameTimer += Time.deltaTime;
         // this will begin crosshair behavior tree if it is not already active and game timer is above 15
         if(!cHActive && gameTimer > 15f)
         {   
