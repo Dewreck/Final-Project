@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class RocketBad : MonoBehaviour
 {
     private float speed = 15f;
-    public int rocketCount = 0;
     private CrosshairBehave crosshrScript;
     private PlayerController playerControllerScript;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,7 @@ public class RocketBad : MonoBehaviour
         {
             Destroy(gameObject);
             // this increases rocket count by one once destroyed
-            crosshrScript.rocketCount ++;
+            
         }
 
         
@@ -36,7 +38,7 @@ public class RocketBad : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(other.gameObject);
-            crosshrScript.rocketCount ++;
+            
         }
         //this destroys both objects on collision with rocket and player and triggers gameover
         if (other.gameObject.CompareTag("Player"))
@@ -45,6 +47,7 @@ public class RocketBad : MonoBehaviour
             Destroy(other.gameObject);
             playerControllerScript.gameOver = true;
             playerControllerScript.GameOverUI();
+            
         }
     }
 }

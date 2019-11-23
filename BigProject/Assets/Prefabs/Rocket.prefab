@@ -125,7 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1ccadbf9aafad4db8126b937f4c154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocketCount: 0
+  missileDeathMsg: {fileID: 5536582851655093899, guid: b594349e2895a904f94dccacbf6c0574,
+    type: 3}
 --- !u!1 &4058790745429443293
 GameObject:
   m_ObjectHideFlags: 0

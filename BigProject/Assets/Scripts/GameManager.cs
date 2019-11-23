@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public void ScoreDisplay()
     {
+        //this adds score based on time elapsed and displays it
         if (!playerControllerScript.gameOver)
         {
         score += Time.deltaTime * 4;
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + Mathf.Round(score);
     }
 
+    //this lets the Restart button refresh the scene
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
