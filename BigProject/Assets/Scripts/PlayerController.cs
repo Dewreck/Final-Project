@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         // this will begin crosshair behavior tree if it is not already active and game timer is above 15
         if(!cHActive && gameTimer > 15f)
         {   
-        Invoke("CrosshairsStart",5);
+        Invoke("CrosshairsStart",0);
         }
 
         

@@ -37,14 +37,14 @@ public class MoveForward : MonoBehaviour
         {
             speed = 11f;
         }
-        if (playerControllerScript.gameTimer > 50f && playerControllerScript.gameTimer < 65f)
+        if (playerControllerScript.gameTimer > 50f)
         {
             speed = 13f;
         }
-        if (playerControllerScript.gameTimer > 65f)
-        {
-            speed = 15f;
-        }
+        // if (playerControllerScript.gameTimer > 65f)
+        // {
+        //     speed = 15f;
+        // }
 
     }
 }

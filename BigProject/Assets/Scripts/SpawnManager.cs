@@ -48,10 +48,10 @@ public class SpawnManager : MonoBehaviour
         {
             spawnInterval = Random.Range(0.1f,1f);
         }
-        if (playerControllerScript.gameTimer > 50f)
-        {
-            spawnInterval = Random.Range(0.1f,.7f);
-        }
+        // if (playerControllerScript.gameTimer > 50f)
+        // {
+        //     spawnInterval = Random.Range(0.1f,.7f);
+        // }
 
     // this spawns a barrier on the ceiling at random intervals during gameplay then repeats
         if(!playerControllerScript.gameOver)

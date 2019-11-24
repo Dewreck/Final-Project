@@ -39,7 +39,8 @@ public class HazardMove : MonoBehaviour
     void HazBegin()
     {
         //this tests if play area is available to begin hazard behavior
-            hazInterval = Random.Range(1f,10f);
+            // hazInterval = Random.Range(1f,10f);
+            
             if(!playerControllerScript.gameOver && up == false && down == false)
             {
             warningDOWN.gameObject.SetActive(true);
@@ -48,7 +49,7 @@ public class HazardMove : MonoBehaviour
             }else
             {
             // this retries to begin the function at another interval
-                hazInterval = Random.Range(1f,10f);
+                hazInterval = Random.Range(1f,9f);
                 Invoke("HazBegin", hazInterval);
             }
     }
@@ -56,7 +57,7 @@ public class HazardMove : MonoBehaviour
     void HazCeilBegin()
     {
         //this tests if play area is available to begin hazard behavior
-            hazInterval = Random.Range(1f,10f);
+            // hazInterval = Random.Range(1f,10f);
             if(!playerControllerScript.gameOver && down == false && up == false)
             {
             warningUP.gameObject.SetActive(true);
@@ -65,7 +66,7 @@ public class HazardMove : MonoBehaviour
             }else
             {
             // this retries to begin the function at another interval
-                hazInterval = Random.Range(1f,10f);
+                hazInterval = Random.Range(1f,9f);
                 Invoke("HazBegin", hazInterval);
             }
     }
@@ -76,6 +77,7 @@ public class HazardMove : MonoBehaviour
     {
         hazard.transform.position = new Vector3(0,-0.27f, transform.position.z);
         warningDOWN.gameObject.SetActive(false);
+        down = false;
         Invoke("HazardReturn", 0.5f);
     }
 //moves the ceiling hazard downwards through the ceiling
@@ -83,6 +85,7 @@ public class HazardMove : MonoBehaviour
     {
         hazardCeil.transform.position = new Vector3(0,2.27f, transform.position.z);
         warningUP.gameObject.SetActive(false);
+        up = false;
         Invoke("HazardCeilReturn", 0.5f);
     }
 //moves the floor hazard back below the floor
@@ -90,7 +93,6 @@ public class HazardMove : MonoBehaviour
     {
         hazInterval = Random.Range(5f,10f);
         hazard.transform.position = new Vector3(0, -1, transform.position.z);
-        down = false;
         Invoke("HazBegin", hazInterval);
     }
 //moves the ceiling hazard back above the ceiling
@@ -98,7 +100,6 @@ public class HazardMove : MonoBehaviour
     {
         hazInterval = Random.Range(5f,10f);
         hazardCeil.transform.position = new Vector3(0, 3, transform.position.z);
-        up = false;
         Invoke("HazCeilBegin", hazInterval);
     }
 }
