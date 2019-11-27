@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject projectile;
     public GameObject crossHairs;
+    public ParticleSystem batteryPoof;
     public TextMeshProUGUI gameOverText;
     public Button restartButton;
 

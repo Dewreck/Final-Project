@@ -6,7 +6,7 @@ public class Rocket : MonoBehaviour
 {
     public float speed = 15f;
     
-    
+    public ParticleSystem laserBlast;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +34,7 @@ public class Rocket : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(other.gameObject);
+            laserBlast.Play();
         }
     }
 }
