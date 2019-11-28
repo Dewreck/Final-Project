@@ -172,6 +172,7 @@ public class PlayerController : MonoBehaviour
 
     public void GameOverUI()
     {
+        // this activates Game Over Menu on game over
         if (gameOver == true)
         {
             gameOverText.gameObject.SetActive(true);
