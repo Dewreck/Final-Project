@@ -139,8 +139,8 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.CompareTag("Hazard"))
         {
             gameOver = true;
-            Debug.Log("Ouch!");
-            Destroy(gameObject);
+            
+            GameOverExplode();
             GameOverUI();
         }
     }
@@ -180,4 +180,13 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    public void GameOverExplode()
+    {
+        Invoke("Kill", 0.1f);
+    }
+
+    public void Kill()
+    {
+        Destroy(gameObject);
+    }
 }

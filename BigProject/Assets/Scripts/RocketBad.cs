@@ -10,6 +10,7 @@ public class RocketBad : MonoBehaviour
     private CrosshairBehave crosshrScript;
     private PlayerController playerControllerScript;
     
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -43,11 +44,11 @@ public class RocketBad : MonoBehaviour
         //this destroys both objects on collision with rocket and player and triggers gameover
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
-            Destroy(other.gameObject);
             playerControllerScript.gameOver = true;
-            playerControllerScript.GameOverUI();
-            
+            Destroy(gameObject);
+            playerControllerScript.GameOverExplode();
+            playerControllerScript.GameOverUI();   
         }
     }
+
 }

@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73efb6df9b7f76f459f91ac93c6e4f4d, type: 2}
+  - {fileID: 2100000, guid: 264cfe00e40826d4e83c7485b7bddea8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -137,6 +137,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: laser explosion
       objectReference: {fileID: 0}
+    - target: {fileID: 1692900208302087708, guid: 1b7c7c8f17e150c4ca3f88e0b8e0121e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692900208321129912, guid: 1b7c7c8f17e150c4ca3f88e0b8e0121e,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1692900208301787212, guid: 1b7c7c8f17e150c4ca3f88e0b8e0121e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -207,11 +217,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3.333333
       objectReference: {fileID: 0}
-    - target: {fileID: 1692900208321129912, guid: 1b7c7c8f17e150c4ca3f88e0b8e0121e,
+    - target: {fileID: 1692900208321157512, guid: 1b7c7c8f17e150c4ca3f88e0b8e0121e,
         type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 264cfe00e40826d4e83c7485b7bddea8, type: 2}
+    - target: {fileID: 1692900208321157512, guid: 1b7c7c8f17e150c4ca3f88e0b8e0121e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 264cfe00e40826d4e83c7485b7bddea8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b7c7c8f17e150c4ca3f88e0b8e0121e, type: 3}
 --- !u!4 &8628611135779788098 stripped
