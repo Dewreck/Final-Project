@@ -58,7 +58,7 @@ public class HazardMove : MonoBehaviour
     {
         //this tests if play area is available to begin hazard behavior
             // hazInterval = Random.Range(1f,10f);
-            if(!playerControllerScript.gameOver && down == false && up == false)
+            if(!playerControllerScript.gameOver && up == false && down == false)
             {
             warningUP.gameObject.SetActive(true);
             up = true;
@@ -66,7 +66,7 @@ public class HazardMove : MonoBehaviour
             }else
             {
             // this retries to begin the function at another interval
-                hazInterval = Random.Range(1f,9f);
+                hazInterval = Random.Range(1f,5f);
                 Invoke("HazBegin", hazInterval);
             }
     }

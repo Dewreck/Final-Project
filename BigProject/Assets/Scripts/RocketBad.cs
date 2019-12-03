@@ -9,6 +9,9 @@ public class RocketBad : MonoBehaviour
     private float speed = 15f;
     private CrosshairBehave crosshrScript;
     private PlayerController playerControllerScript;
+    public ParticleSystem rocketBoom;
+    
+   
     
     
     // Start is called before the first frame update
@@ -36,7 +39,8 @@ public class RocketBad : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Barrier"))
-        {
+        { 
+            Instantiate(rocketBoom, transform.position, rocketBoom.transform.rotation);
             Destroy(gameObject);
             Destroy(other.gameObject);
             
