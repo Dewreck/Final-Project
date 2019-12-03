@@ -913,6 +913,8 @@ MonoBehaviour:
     type: 3}
   crossHairs: {fileID: 2026605432}
   batteryPoof: {fileID: 1048354997}
+  laserBlast: {fileID: 1692900208321129912, guid: 1b7c7c8f17e150c4ca3f88e0b8e0121e,
+    type: 3}
   gameOverText: {fileID: 500738826}
   restartButton: {fileID: 2097767108}
   playerHealth: 2

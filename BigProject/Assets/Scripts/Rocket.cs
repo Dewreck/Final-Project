@@ -32,9 +32,10 @@ public class Rocket : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Barrier"))
         {
+            Instantiate(laserBlast, transform.position, laserBlast.transform.rotation);
             Destroy(gameObject);
             Destroy(other.gameObject);
-            laserBlast.Play();
+            
         }
     }
 }

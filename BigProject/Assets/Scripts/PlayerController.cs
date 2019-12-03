@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public GameObject projectile;
     public GameObject crossHairs;
     public ParticleSystem batteryPoof;
+    public ParticleSystem laserBlast;
     public TextMeshProUGUI gameOverText;
     public Button restartButton;
 
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour
             nextFire = Time.time + fireRate;
             playerHealth -= .2f;
             Instantiate(projectile, transform.position, projectile.transform.rotation);
+            Instantiate(laserBlast, transform.position, laserBlast.transform.rotation);
         }  else if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire && playerHealth < .6f)
         {
             // this shows that health value is insufficient to spawn projectile
