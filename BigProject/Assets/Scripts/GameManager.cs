@@ -8,14 +8,18 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public Button restartButton;
+    public Button startButton;
     public TextMeshProUGUI scoreText;
     private PlayerController playerControllerScript;
     private float score;
     public GameObject deathExplosion;
     private int explosionPlayback;
     private Vector3 explodeLocation;
+    public static bool gameStart = false;
+    
 
     // Start is called before the first frame update
+
     void Start()
     {
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
@@ -56,4 +60,6 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+   
 }

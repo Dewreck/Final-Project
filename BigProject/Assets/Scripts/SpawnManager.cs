@@ -24,12 +24,12 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnPillar", 0, 1.5f);
-        Invoke("SpawnBarrierUp", 1.0f);
-        Invoke("SpawnBarrierDown", 1.0f);
-        Invoke("SpawnBattery", 5.0f);
-
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+
+        // if (!playerControllerScript.paused)
+        // {
+        BeginSpawning();
+        // }
     }
 
     // Update is called once per frame
@@ -39,9 +39,17 @@ public class SpawnManager : MonoBehaviour
         
     }
 
+    public void BeginSpawning()
+    {
+        InvokeRepeating("SpawnPillar", 0, 1.5f);
+        Invoke("SpawnBarrierUp", 1.0f);
+        Invoke("SpawnBarrierDown", 1.0f);
+        Invoke("SpawnBattery", 5.0f);
+    }
 // this generates intervals that decrease as game progresses
     void SpawnBarrierUp()
     {
+        
         float spawnInterval = Random.Range(0.1f,2.0f);
 
         if (playerControllerScript.gameTimer > 25f && playerControllerScript.gameTimer < 50f)
@@ -63,7 +71,7 @@ public class SpawnManager : MonoBehaviour
         
         Invoke("SpawnBarrierUp", spawnInterval);
         }
-
+        
 
     }
 // this generates intervals that decrease as game progresses

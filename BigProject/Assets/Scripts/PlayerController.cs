@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public float floorPos = 0.5f;
     public float xBound = 2.1f;
     public bool gameOver = false;
+    // public bool isGameActive = false;
 
     public float fireRate = 1.0f;
     private float nextFire = 0.0f;
@@ -33,23 +34,38 @@ public class PlayerController : MonoBehaviour
     public float gameTimer;
 
     private CrosshairBehave crosshrScript;
+    private GameManager gameManagerScript; 
+    private SpawnManager spawnManagerScript;
+
+    public bool paused = false;
+    bool toggle;
     // Start is called before the first frame update
     void Start()
     {
         crosshrScript = GameObject.Find("Crosshairs").GetComponent<CrosshairBehave>();
-        
+        gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
+        spawnManagerScript = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        // if (!paused && !toggle)
+        // {
+        //     Paused();
+        // }
+        GameOverUI();
+        if (!gameOver)
+        {
         PlayerMovement();
         PlayerBounding();
         HealthDrain();
-        GameOverUI();
+        
         // this starts a timer that increases
         gameTimer += Time.deltaTime;
+        }
         // this will begin crosshair behavior tree if it is not already active and game timer is above 15
         if(!cHActive && gameTimer > 15f)
         {   
@@ -76,10 +92,9 @@ public class PlayerController : MonoBehaviour
     void HealthDrain()
     {
         // Slowly drains player health during gameplay
-        if (!gameOver)
-        {
+        
         playerHealth -= Time.deltaTime * .1f;
-        }
+        
         // Triggers GameOver and Player Destruction if health drains to 0
         if (playerHealth < 0.0f)
         {
@@ -97,19 +112,18 @@ public class PlayerController : MonoBehaviour
     void PlayerMovement()
     {
     // allows player to move left/right
-        if(!gameOver)
-        {
+        
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
-        }
+        
     // allows player to jump to the ceiling
-        if(Input.GetKeyDown(KeyCode.W) && !gameOver)
+        if(Input.GetKeyDown(KeyCode.W))
         {
             
             transform.position = new Vector3(transform.position.x, ceilingPos, transform.position.z);
         }
     // allows player to jump to the floor
-        if(Input.GetKeyDown(KeyCode.S) && !gameOver)
+        if(Input.GetKeyDown(KeyCode.S))
         {
             transform.position = new Vector3(transform.position.x, floorPos, transform.position.z);
         }
@@ -191,4 +205,28 @@ public class PlayerController : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    // void StartGame()
+    // {
+    //     paused = false;
+    //     spawnManagerScript.BeginSpawning();
+    //     Time.timeScale = 1f;
+    //     Debug.Log("StartGame");
+    // }
+
+    // void Paused()
+    // {
+    //     paused = true;
+    //     Time.timeScale = 0f;
+    //     Debug.Log("Paused");
+    // }
+
+    // public void ToggleStart()
+    // {
+        
+    //         toggle = true;
+    //         StartGame();
+    //         Debug.Log("ToggleStart");
+        
+    // }
 }
