@@ -1568,7 +1568,6 @@ MonoBehaviour:
   fireRate: 1
   cHActive: 0
   gameTimer: 0
-  paused: 0
 --- !u!54 &590413250
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3127,6 +3126,9 @@ MonoBehaviour:
   projectileShoot: {fileID: 8300000, guid: b9b2b4b59bc96d043afb8f0263bfa5ae, type: 3}
   projectileHit: {fileID: 8300000, guid: 0c4c6d375d2302b439b9e4ed03362da4, type: 3}
   rocketHit: {fileID: 8300000, guid: 913d6445ee8cc4152a9c18da590ee203, type: 3}
+  batteryGet: {fileID: 8300000, guid: 113ee460fadc340e4957a7404a9fbb27, type: 3}
+  batteryGet2: {fileID: 8300000, guid: e7ee25a47d63b46cdaf65480d62b405c, type: 3}
+  deathExplosion: {fileID: 8300000, guid: 774ebc5c074ce4695b7cc310fbd44087, type: 3}
 --- !u!1 &964952715
 GameObject:
   m_ObjectHideFlags: 0
