@@ -36,26 +36,20 @@ public class PlayerController : MonoBehaviour
     private CrosshairBehave crosshrScript;
     private GameManager gameManagerScript; 
     private SpawnManager spawnManagerScript;
+    private AudioManager audioManagerScript;
 
-    public bool paused = false;
-    bool toggle;
+    
     // Start is called before the first frame update
     void Start()
     {
         crosshrScript = GameObject.Find("Crosshairs").GetComponent<CrosshairBehave>();
         gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
         spawnManagerScript = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
-
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if (!paused && !toggle)
-        // {
-        //     Paused();
-        // }
         GameOverUI();
         if (!gameOver)
         {
@@ -67,7 +61,7 @@ public class PlayerController : MonoBehaviour
         gameTimer += Time.deltaTime;
         }
         // this will begin crosshair behavior tree if it is not already active and game timer is above 15
-        if(!cHActive && gameTimer > 15f)
+        if(!cHActive && gameTimer > 15f && !gameOver)
         {   
         Invoke("CrosshairsStart",0);
         }
@@ -155,7 +149,6 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.CompareTag("Hazard"))
         {
             gameOver = true;
-            
             GameOverExplode();
             GameOverUI();
         }
@@ -193,7 +186,7 @@ public class PlayerController : MonoBehaviour
         {
             gameOverText.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
-        }
+        } 
     }
     
     public void GameOverExplode()
@@ -206,27 +199,4 @@ public class PlayerController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // void StartGame()
-    // {
-    //     paused = false;
-    //     spawnManagerScript.BeginSpawning();
-    //     Time.timeScale = 1f;
-    //     Debug.Log("StartGame");
-    // }
-
-    // void Paused()
-    // {
-    //     paused = true;
-    //     Time.timeScale = 0f;
-    //     Debug.Log("Paused");
-    // }
-
-    // public void ToggleStart()
-    // {
-        
-    //         toggle = true;
-    //         StartGame();
-    //         Debug.Log("ToggleStart");
-        
-    // }
 }

@@ -6,10 +6,12 @@ public class BatteryCollect : MonoBehaviour
 {
 
     private PlayerController playerControllerScript;
+    private AudioManager audioManagerScript;
     // Start is called before the first frame update
     void Start()
     {
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+        audioManagerScript = GameObject.Find("Main Camera").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class BatteryCollect : MonoBehaviour
         Debug.Log("Battery Get!!");
         playerControllerScript.playerHealth += 1f;
         playerControllerScript.batteryPoof.Play();
+        audioManagerScript.BatteryGetSound();
         }
     } 
 }

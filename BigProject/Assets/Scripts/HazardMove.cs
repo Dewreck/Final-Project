@@ -11,6 +11,8 @@ public class HazardMove : MonoBehaviour
     public GameObject hazardCeil;
     public TextMeshProUGUI warningUP;
     public TextMeshProUGUI warningDOWN;
+    public AudioClip warningSound;
+    private AudioSource hazardAudio;
 
     public bool down;
     public bool up;
@@ -21,6 +23,7 @@ public class HazardMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hazardAudio = GetComponent<AudioSource>();
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     // this starts the floor hazard path
         Invoke("HazBegin",15);
@@ -43,9 +46,10 @@ public class HazardMove : MonoBehaviour
             
             if(!playerControllerScript.gameOver && up == false && down == false)
             {
-            warningDOWN.gameObject.SetActive(true);
-            down = true;            
-            Invoke("HazardHurt", 2);
+                hazardAudio.PlayOneShot(warningSound, 0.4f);
+                warningDOWN.gameObject.SetActive(true);
+                down = true;            
+                Invoke("HazardHurt", 2);
             }else
             {
             // this retries to begin the function at another interval
@@ -60,9 +64,10 @@ public class HazardMove : MonoBehaviour
             // hazInterval = Random.Range(1f,10f);
             if(!playerControllerScript.gameOver && up == false && down == false)
             {
-            warningUP.gameObject.SetActive(true);
-            up = true;
-            Invoke("HazardCeilHurt", 2);
+                hazardAudio.PlayOneShot(warningSound, 0.4f);
+                warningUP.gameObject.SetActive(true);
+                up = true;
+                Invoke("HazardCeilHurt", 2);
             }else
             {
             // this retries to begin the function at another interval

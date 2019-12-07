@@ -10,15 +10,18 @@ public class RocketBad : MonoBehaviour
     private CrosshairBehave crosshrScript;
     private PlayerController playerControllerScript;
     public ParticleSystem rocketBoom;
-    
-   
-    
+    public AudioClip rocketFlyby;
+    private AudioSource rocketAudio;
+    private AudioManager audioManagerScript;
     
     // Start is called before the first frame update
     void Start()
     {
+        rocketAudio = GetComponent<AudioSource>();
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
         crosshrScript = GameObject.Find("Crosshairs").GetComponent<CrosshairBehave>();
+        audioManagerScript = GameObject.Find("Main Camera").GetComponent<AudioManager>();
+        rocketAudio.PlayOneShot(rocketFlyby, 0.2f);
     }
 
     // Update is called once per frame
@@ -41,6 +44,7 @@ public class RocketBad : MonoBehaviour
         if (other.gameObject.CompareTag("Barrier"))
         { 
             Instantiate(rocketBoom, transform.position, rocketBoom.transform.rotation);
+            audioManagerScript.RocketHitSound();
             Destroy(gameObject);
             Destroy(other.gameObject);
             
@@ -50,6 +54,7 @@ public class RocketBad : MonoBehaviour
         {
             playerControllerScript.gameOver = true;
             Destroy(gameObject);
+            audioManagerScript.RocketHitSound();
             playerControllerScript.GameOverExplode();
             playerControllerScript.GameOverUI();   
         }
