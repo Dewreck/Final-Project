@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+// This Script manages most audio effects within the game
+
     public AudioClip projectileShoot;
     public AudioClip projectileHit;
     public AudioClip rocketHit;
@@ -29,21 +31,25 @@ public class AudioManager : MonoBehaviour
 
     public void ProjectileShootSound()
     {
+        //plays audio on projectile instantiate
         cameraAudio.PlayOneShot(projectileShoot, 0.8f);
     }
 
     public void ProjectileHitSound()
     {
+        //plays audio when projectile destroys a barrier
         cameraAudio.PlayOneShot(projectileHit, 0.5f);
     }
 
     public void RocketHitSound()
     {
+        //plays audio when rocket destroys a barrier
         cameraAudio.PlayOneShot(rocketHit, 3.0f);
     }
 
     public void BatteryGetSound()
     {
+        //plays audio when battery is collected
         cameraAudio.PlayOneShot(batteryGet, 2f);
         cameraAudio.PlayOneShot(batteryGet2, 2.5f);
     }
@@ -52,6 +58,7 @@ public class AudioManager : MonoBehaviour
     {
         if (playerControllerScript.gameOver && !deadYet)
         {
+            //only allows DeathSound() to be activated once
             deadYet = true;
             DeathSound();
         }
@@ -59,6 +66,7 @@ public class AudioManager : MonoBehaviour
 
     public void DeathSound()
     {
+        //plays audio when player is killed
         cameraAudio.PlayOneShot(deathExplosion, 2.0f);
     }
 }

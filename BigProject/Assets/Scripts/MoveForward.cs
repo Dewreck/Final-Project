@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MoveForward : MonoBehaviour
 {
+// This manages the movement of all Prefabs
+
     public float speed = 7.0f;
     private float backBound = -15f;
     private PlayerController playerControllerScript;
@@ -28,7 +30,7 @@ public class MoveForward : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+    // this increases the speed of objects in intervals as the game progresses
         if (playerControllerScript.gameTimer > 20f && playerControllerScript.gameTimer < 35f)
         {
             speed = 9f;
@@ -37,14 +39,13 @@ public class MoveForward : MonoBehaviour
         {
             speed = 11f;
         }
-        if (playerControllerScript.gameTimer > 50f)
+        if (playerControllerScript.gameTimer > 50f && playerControllerScript.gameTimer < 65f)
         {
             speed = 13f;
         }
-        // if (playerControllerScript.gameTimer > 65f)
-        // {
-        //     speed = 15f;
-        // }
-
+        if (playerControllerScript.gameTimer > 65f)
+        {
+            speed = 15f;
+        }
     }
 }

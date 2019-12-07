@@ -7,8 +7,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+// This Script manages certain aspects of the UI and Particle effects that don't work within PlayerController
+
     public Button restartButton;
-    public Button startButton;
     public TextMeshProUGUI scoreText;
     private PlayerController playerControllerScript;
     private float score;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void DeathExplosion()
     {
+        // this plays the player explosion effect once on the player's location
         if (playerControllerScript.gameOver &&  explosionPlayback == 0)
         {
             explodeLocation = GameObject.Find("Player").transform.position;

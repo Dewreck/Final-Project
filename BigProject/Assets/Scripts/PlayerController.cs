@@ -7,32 +7,28 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 15f;
-
+// This Script manages the Player and most Core Game functions. This is where most items are called to and where most processes are evaluated
+    
     public GameObject projectile;
     public GameObject crossHairs;
     public ParticleSystem batteryPoof;
     public ParticleSystem laserBlast;
     public TextMeshProUGUI gameOverText;
     public Button restartButton;
-
+    private float speed = 5f;
     public float playerHealth = 2f;
-    
-   
-    public float horizontalInput;
-    public float ceilingPos = 1.5f;
-    public float floorPos = 0.5f;
-    public float xBound = 2.1f;
+    private float horizontalInput;
+    private float ceilingPos = 1.5f;
+    private float floorPos = 0.5f;
+    private float xBound = 2.1f;
     public bool gameOver = false;
-    // public bool isGameActive = false;
-
-    public float fireRate = 1.0f;
+    private float fireRate = 1.0f;
     private float nextFire = 0.0f;
     private float crosshrinterval;
     public bool cHActive = false;
-
     public float gameTimer;
-
+    private float lowHealth = 0.6f;
+    private float fullHealth = 2.0f;
     private CrosshairBehave crosshrScript;
     private GameManager gameManagerScript; 
     private SpawnManager spawnManagerScript;
@@ -68,18 +64,14 @@ public class PlayerController : MonoBehaviour
 
         
 
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire && playerHealth > .6f && !gameOver)
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire && playerHealth > lowHealth && !gameOver)
         {
             // this spawns a projectile on keypress with anti-spam protection if health is above 30%
             nextFire = Time.time + fireRate;
             playerHealth -= .2f;
             Instantiate(projectile, transform.position, projectile.transform.rotation);
             Instantiate(laserBlast, transform.position, laserBlast.transform.rotation);
-        }  else if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire && playerHealth < .6f)
-        {
-            // this shows that health value is insufficient to spawn projectile
-            Debug.Log("No Power");
-        }
+        }  
         
     }
 
@@ -95,11 +87,12 @@ public class PlayerController : MonoBehaviour
             gameOver = true;
             Destroy(gameObject);
             Debug.Log("No Battery");
+            GameOverUI();
         }
         // Caps player max health at a total of 2
-        if (playerHealth > 2)
+        if (playerHealth > fullHealth)
         {
-            playerHealth = 2f;
+            playerHealth = fullHealth;
         }
     }
 
@@ -166,8 +159,11 @@ public class PlayerController : MonoBehaviour
     void CrosshairsActive()
     {
         // sets crosshairs as active and starts countdown to deactivate
+        if (!gameOver)
+        {
         crossHairs.gameObject.SetActive(true);
         StartCoroutine(MissileActive());
+        }
         
     }
 
@@ -191,11 +187,13 @@ public class PlayerController : MonoBehaviour
     
     public void GameOverExplode()
     {
+        //This delays destroying the player to give time to locate it while playing the death explosion
         Invoke("Kill", 0.1f);
     }
 
     public void Kill()
     {
+        //This Destroys the player object
         Destroy(gameObject);
     }
 

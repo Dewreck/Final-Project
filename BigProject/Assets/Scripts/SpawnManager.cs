@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+// This Script handles the spawning patterns of Barriers, Batteries, and the Wall Pillars
+
     public GameObject pillar;
     public GameObject barrier;
     public GameObject battery;
@@ -18,6 +20,9 @@ public class SpawnManager : MonoBehaviour
     public float barrierSpawnX2 = 3.8f;
     public float floorBarrierY = 0.38f;
     public float topBarrierY = 1.61f;
+    private float batteryX = 2.1f;
+    private float batteryY = 0.5f;
+    private float batteryY2 = 1.6f;
 
     private PlayerController playerControllerScript;
 
@@ -26,10 +31,9 @@ public class SpawnManager : MonoBehaviour
     {
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
 
-        // if (!playerControllerScript.paused)
-        // {
+       
         BeginSpawning();
-        // }
+        
     }
 
     // Update is called once per frame
@@ -46,20 +50,20 @@ public class SpawnManager : MonoBehaviour
         Invoke("SpawnBarrierDown", 1.0f);
         Invoke("SpawnBattery", 5.0f);
     }
-// this generates intervals that decrease as game progresses
+
     void SpawnBarrierUp()
     {
-        
+    // This causes ceiling barriers to spawn more frequently as the game progresses
         float spawnInterval = Random.Range(0.1f,2.0f);
 
         if (playerControllerScript.gameTimer > 25f && playerControllerScript.gameTimer < 50f)
         {
             spawnInterval = Random.Range(0.1f,1f);
         }
-        // if (playerControllerScript.gameTimer > 50f)
-        // {
-        //     spawnInterval = Random.Range(0.1f,.7f);
-        // }
+        if (playerControllerScript.gameTimer > 50f)
+        {
+            spawnInterval = Random.Range(0.1f,.7f);
+        }
 
     // this spawns a barrier on the ceiling at random intervals during gameplay then repeats
         if(!playerControllerScript.gameOver)
@@ -74,10 +78,12 @@ public class SpawnManager : MonoBehaviour
         
 
     }
-// this generates intervals that decrease as game progresses
+
 
     void SpawnBarrierDown()
     {
+    // This causes floor barriers to spawn more frequently as the game progresses
+
         float spawnInterval = Random.Range(0.1f,2.0f);
         
         if (playerControllerScript.gameTimer > 25f && playerControllerScript.gameTimer < 50f)
@@ -106,7 +112,7 @@ public class SpawnManager : MonoBehaviour
 
         if(!playerControllerScript.gameOver)
         {
-        Vector3 batterySpawnPos = new Vector3(Random.Range(-2.1f, 2.1f),Random.Range(0.5f,1.6f), ObjectZ);
+        Vector3 batterySpawnPos = new Vector3(Random.Range(-batteryX, batteryX),Random.Range(batteryY,batteryY2), ObjectZ);
         Instantiate(battery, batterySpawnPos, battery.transform.rotation);
 
         Invoke("SpawnBattery", spawnInterval);

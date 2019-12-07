@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class HazardMove : MonoBehaviour
 {
+// This Script manages the behavior of the Floor and Ceiling Hazards 
+
     public GameObject hazard;
     public GameObject hazardCeil;
     public TextMeshProUGUI warningUP;
@@ -42,7 +44,7 @@ public class HazardMove : MonoBehaviour
     void HazBegin()
     {
         //this tests if play area is available to begin hazard behavior
-            // hazInterval = Random.Range(1f,10f);
+            hazInterval = Random.Range(1f,10f);
             
             if(!playerControllerScript.gameOver && up == false && down == false)
             {
@@ -61,7 +63,7 @@ public class HazardMove : MonoBehaviour
     void HazCeilBegin()
     {
         //this tests if play area is available to begin hazard behavior
-            // hazInterval = Random.Range(1f,10f);
+            hazInterval = Random.Range(1f,10f);
             if(!playerControllerScript.gameOver && up == false && down == false)
             {
                 hazardAudio.PlayOneShot(warningSound, 0.4f);

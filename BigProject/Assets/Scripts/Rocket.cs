@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
+    //This script controls the behavior of the playermade laser projectiles
+
     public float speed = 15f;
-    
     public ParticleSystem laserBlast;
     private AudioManager audioManagerScript;
    
@@ -38,8 +39,10 @@ public class Rocket : MonoBehaviour
             Instantiate(laserBlast, transform.position, laserBlast.transform.rotation);
             audioManagerScript.ProjectileHitSound();
             Destroy(gameObject);
-            Destroy(other.gameObject);
-            
+            Destroy(other.gameObject); 
+             
         }
     }
+
+    
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HealthDisplay : MonoBehaviour
 {
+// This Script manages the size, color, and behaviorof the Health bar
+    
     private PlayerController playerControllerScript;
     private float healthAmnt;
     private

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CrosshairBehave : MonoBehaviour
 {
+// This Script manages the Tracking and Firing behavior of the Crosshair object
+
     public float speed;
     private Rigidbody crossHrRb;
     private GameObject player;

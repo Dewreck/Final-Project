@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RotateBattery : MonoBehaviour
 {
+// This makes the Battery Prefab spin
+
     public float speed = 200;
     // Start is called before the first frame update
     void Start()

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class RocketBad : MonoBehaviour
 {
+// This controls the behavior of the dangerous projectiles fired by the Crosshairs object
+
     private float speed = 15f;
     private CrosshairBehave crosshrScript;
     private PlayerController playerControllerScript;

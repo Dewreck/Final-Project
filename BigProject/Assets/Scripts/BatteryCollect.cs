@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BatteryCollect : MonoBehaviour
 {
+//This Script manages the behavior of the Battery prefab when the player collects it
 
     private PlayerController playerControllerScript;
     private AudioManager audioManagerScript;
