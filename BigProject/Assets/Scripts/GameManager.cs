@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public Button restartButton;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreText2;
     private PlayerController playerControllerScript;
     private float score;
     public GameObject deathExplosion;
@@ -41,9 +42,15 @@ public class GameManager : MonoBehaviour
         //this adds score based on time elapsed and displays it
         if (!playerControllerScript.gameOver)
         {
-        score += Time.deltaTime * 4;
+            score += Time.deltaTime * 4;
         }
         scoreText.text = "Score: " + Mathf.Round(score);
+
+        if (!playerControllerScript.gameOver)
+        {
+            score += Time.deltaTime * 4;
+        }
+        scoreText2.text = "Score: " + Mathf.Round(score);
     }
 
     public void DeathExplosion()
@@ -67,5 +74,10 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quitting Game");
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
     }
 }

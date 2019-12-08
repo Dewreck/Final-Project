@@ -26,7 +26,6 @@ public class CrosshairBehave : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
         
         crossHrRb = GetComponent<Rigidbody>();
@@ -39,9 +38,9 @@ public class CrosshairBehave : MonoBehaviour
         // this tracks player position and follows
         if(!playerControllerScript.gameOver)
         {
-        Vector3 lookDirection = (player.transform.position - transform.position).normalized;
-        
-        crossHrRb.AddForce(lookDirection * speed);
+            Vector3 lookDirection = (player.transform.position - transform.position).normalized;
+            
+            crossHrRb.AddForce(lookDirection * speed);
         }
         
 

@@ -49,17 +49,17 @@ public class PlayerController : MonoBehaviour
         GameOverUI();
         if (!gameOver)
         {
-        PlayerMovement();
-        PlayerBounding();
-        HealthDrain();
-        
+            PlayerMovement();
+            PlayerBounding();
+            HealthDrain();
+            
         // this starts a timer that increases
         gameTimer += Time.deltaTime;
         }
         // this will begin crosshair behavior tree if it is not already active and game timer is above 15
         if(!cHActive && gameTimer > 15f && !gameOver)
         {   
-        Invoke("CrosshairsStart",0);
+            Invoke("CrosshairsStart",0);
         }
 
         

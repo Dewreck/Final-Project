@@ -1,0 +1,5 @@
+Final Project Repo:
+https://github.com/Dewreck/Final-Project/tree/master/BigProject/Assets/Scripts
+
+Create With Code Repo:
+https://github.com/Dewreck/DGM-1610-Fall2019/tree/master/Create%20With%20Code/Assets/Scripts
